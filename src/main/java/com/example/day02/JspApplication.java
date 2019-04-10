@@ -13,7 +13,7 @@
  * accordance with the terms of the license agreement you entered into
  * with e-dewin.com
  */
-package com.example.day01;
+package com.example.day02;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,13 +21,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author: mady
  * @version: 1.0
- * @date: 2019/4/10 18:01
+ * @date: 2019/4/10 19:21
  */
-@SpringBootApplication
-public class HelloWorldSpringBoot {
+@SpringBootApplication  //扫描该包下的controlelr
+public class JspApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(HelloWorldSpringBoot.class,args);
+        SpringApplication.run(JspApplication.class,args);
     }
-
 }

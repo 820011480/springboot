@@ -13,21 +13,24 @@
  * accordance with the terms of the license agreement you entered into
  * with e-dewin.com
  */
-package com.example.day01;
+package com.example.day01.controller;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author: mady
  * @version: 1.0
- * @date: 2019/4/10 18:01
+ * @date: 2019/4/10 18:49
  */
-@SpringBootApplication
-public class HelloWorldSpringBoot {
 
-    public static void main(String[] args) {
-        SpringApplication.run(HelloWorldSpringBoot.class,args);
+@RestController  //@Controller  @ResponseBody
+@RequestMapping("/hello")
+public class HelloController {
+
+    @GetMapping("/test")
+    public String getInfo(){
+        return "learn springboot， hello world!";
     }
-
 }

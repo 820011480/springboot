@@ -13,12 +13,15 @@
  * accordance with the terms of the license agreement you entered into
  * with e-dewin.com
  */
-package com.example.day01;
+package com.example.day03.dao;
+
+import com.example.day03.domain.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  * @author: mady
  * @version: 1.0
- * @date: 2019/4/10 18:44
+ * @date: 2019/4/10 20:46
  */
-public class Test1 {
+public interface UserDao extends JpaRepository<User,Integer> {
 }
