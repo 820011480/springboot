@@ -26,6 +26,10 @@ import org.springframework.web.bind.annotation.RestController;
  * @author: mady
  * @version: 1.0
  * @date: 2019/4/10 20:37
+ *
+ * jpa 排坑:
+ * TransactionRequiredException : update /delete 需要事务
+ * 插入主键的时候可以使用 原生sql 语句
  */
 @RestController
 @RequestMapping("/user")

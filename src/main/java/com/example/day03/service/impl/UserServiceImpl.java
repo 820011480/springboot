@@ -15,9 +15,13 @@
  */
 package com.example.day03.service.impl;
 
+import com.example.day03.dao.UserDao;
 import com.example.day03.domain.User;
 import com.example.day03.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
 
 /**
  * @author: mady
@@ -27,25 +31,32 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements IUserService {
 
-
+    @Autowired
+    private UserDao userDao;
 
     @Override
     public User getQuery(Integer id) {
-        return null;
+        return userDao.findOne(id);
     }
 
     @Override
     public void addUser(User user) {
+//        userDao.save(user);
+        userDao.addUser(user.getId() ,user.getUsername() ,user.getPassword(),user.getAge());
 
     }
 
     @Override
     public void delUser(Integer id) {
-
+        userDao.delete(id);
     }
 
     @Override
+    @Transactional
     public void updateUser(User user) {
-
+        //第一种更新方法:(save更新)
+//        userDao.save(user);
+        //第二种原生sql 更新
+        userDao.updateOne(user.getPassword(), user.getUsername(), user.getId());
     }
 }

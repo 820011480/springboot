@@ -20,8 +20,23 @@ package com.example.day03.domain;
  * @version: 1.0
  * @date: 2019/4/10 20:40
  */
+
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+/**
+ * 申明User 是个pojo
+ */
+@Entity
+@Table(name="t_user")
 public class User {
 
+    @Id
+    @GeneratedValue
     private Integer id;
 
     private String username;
@@ -29,6 +44,16 @@ public class User {
     private String password;
 
     private Integer age;
+
+    public User() {
+    }
+
+    public User(Integer id, String username, String password, Integer age) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.age = age;
+    }
 
     public Integer getId() {
         return id;
@@ -59,16 +84,6 @@ public class User {
     }
 
     public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public User() {
-    }
-
-    public User(Integer id, String username, String password, Integer age) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
         this.age = age;
     }
 
