@@ -1,4 +1,4 @@
- /**
+/**
  * Project: demo
  * <p>
  * File Created at 2019/4/10
@@ -13,11 +13,11 @@
  * accordance with the terms of the license agreement you entered into
  * with e-dewin.com
  */
-package com.example.day03.service.impl;
+package com.example.day06.service.impl;
 
-import com.example.day03.dao.UserDao;
-import com.example.day03.domain.User;
-import com.example.day03.service.IUserService;
+import com.example.day06.dao.UserDao;
+import com.example.day06.domain.User;
+import com.example.day06.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,5 +58,14 @@ public class UserServiceImpl implements IUserService {
 //        userDao.save(user);
         //第二种原生sql 更新
         userDao.updateOne(user.getPassword(), user.getUsername(), user.getId());
+    }
+
+    @Override
+    public Boolean verfiy(User user) {
+        User result = userDao.findByUsernameAndPassword(user.getUsername(),user.getPassword());
+        if (result == null){
+            return false;
+        }
+        return true;
     }
 }

@@ -1,4 +1,4 @@
- /**
+/**
  * Project: demo
  * <p>
  * File Created at 2019/4/10
@@ -13,11 +13,11 @@
  * accordance with the terms of the license agreement you entered into
  * with e-dewin.com
  */
-package com.example.day03.service.impl;
+package com.example.day04.service.impl;
 
-import com.example.day03.dao.UserDao;
-import com.example.day03.domain.User;
-import com.example.day03.service.IUserService;
+import com.example.day04.dao.UserDao;
+import com.example.day04.domain.User;
+import com.example.day04.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

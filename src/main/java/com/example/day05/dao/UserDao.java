@@ -1,4 +1,4 @@
- /**
+/**
  * Project: demo
  * <p>
  * File Created at 2019/4/10
@@ -13,9 +13,9 @@
  * accordance with the terms of the license agreement you entered into
  * with e-dewin.com
  */
-package com.example.day03.dao;
+package com.example.day05.dao;
 
-import com.example.day03.domain.User;
+import com.example.day05.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
