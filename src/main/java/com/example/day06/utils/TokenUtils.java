@@ -17,12 +17,14 @@ package com.example.day06.utils;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.auth0.jwt.interfaces.JWTVerifier;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -51,6 +53,7 @@ public class TokenUtils {
         try{
             // 设置过期时间(当前时间+有效时长)
             Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
+            System.out.println(date);
             //加密算法
             Algorithm algorithm = Algorithm.HMAC256(TOKEN_SECRET);
             // 设置头部信息
@@ -83,6 +86,19 @@ public class TokenUtils {
             log.error("验证错误:{}",e.getLocalizedMessage(),e.fillInStackTrace());
             return false;
         }
+    }
+
+    public static void main(String[] args) {
+        String mady = sign("mady", "123456");
+        System.out.println("token:" + mady);
+        Map<String, Claim> claims = JWT.decode(mady).getClaims();
+        Date expiresAt = JWT.decode(mady).getExpiresAt();
+        claims.forEach((k,v)->{
+            System.out.println(k);
+            System.out.println(v.asString());
+        });
+        System.out.println(expiresAt);
+        System.out.println(claims);
 
     }
 }
