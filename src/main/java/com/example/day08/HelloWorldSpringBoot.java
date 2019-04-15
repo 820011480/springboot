@@ -13,23 +13,24 @@
  * accordance with the terms of the license agreement you entered into
  * with e-dewin.com
  */
-package com.example.day05;
+package com.example.day08;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 
 /**
  * @author: mady
  * @version: 1.0
- * @date: 2019/4/11 11:37
- * fastjson json格式转换
+ * @date: 2019/4/12 15:58
+ * 配置SpringBoot支持自动装载Servlet
  */
 @SpringBootApplication
-public class JpaApplication {
+@ServletComponentScan(value = "com.example.day08.servlet")
+public class HelloWorldSpringBoot {
 
     public static void main(String[] args) {
-
-        SpringApplication.run(JpaApplication.class,args);
+        SpringApplication.run(HelloWorldSpringBoot.class,args);
     }
+
 }

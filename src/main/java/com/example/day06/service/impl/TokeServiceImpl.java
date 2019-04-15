@@ -19,18 +19,20 @@ import com.example.day06.dao.TokenDao;
 import com.example.day06.domain.Token;
 import com.example.day06.service.ITokenService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @author: mady
  * @version: 1.0
  * @date: 2019/4/11 18:13
  */
+@Service
 public class TokeServiceImpl implements ITokenService {
     @Autowired
     private TokenDao tokenDao;
     @Override
     public Token findByUserId(Integer id) {
-        return tokenDao.findByUserId(id);
+        return tokenDao.findByuserid(id);
     }
 
     @Override

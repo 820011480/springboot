@@ -20,6 +20,7 @@ import com.auth0.jwt.interfaces.Claim;
 import com.example.day03.domain.User;
 import com.example.day06.utils.TokenUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;

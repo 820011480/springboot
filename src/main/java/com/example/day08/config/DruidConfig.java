@@ -13,21 +13,14 @@
  * accordance with the terms of the license agreement you entered into
  * with e-dewin.com
  */
-package com.example.day06.config;
+package com.example.day08.config;
 
-import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import javax.sql.DataSource;
-import java.sql.SQLException;
 
 /**
  * @author: mady
@@ -36,7 +29,6 @@ import java.sql.SQLException;
  */
 @Configuration
 public class DruidConfig {
-
     @Bean
     public ServletRegistrationBean druidServletRegistrationBean(){
         //org.springframework.boot.context.embedded.ServletRegistrationBean提供类的进行注册.（路径前缀）
@@ -59,12 +51,12 @@ public class DruidConfig {
      * @return
      */
     @Bean
-    public FilterRegistrationBean druidStatFilter2() {
+    public FilterRegistrationBean druidStatFilter2(){
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean(new WebStatFilter());
         //添加过滤规则.
         filterRegistrationBean.addUrlPatterns("/*");
         //添加不需要忽略的格式信息.
-        filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid2/*");
+        filterRegistrationBean.addInitParameter("exclusions","*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid2/*");
 
         return filterRegistrationBean;
     }

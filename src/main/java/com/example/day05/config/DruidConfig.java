@@ -15,12 +15,25 @@
  */
 package com.example.day05.config;
 
+import com.alibaba.druid.pool.DruidDataSource;
+import com.alibaba.druid.pool.DruidDataSourceFactory;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
+import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+
+import javax.sql.DataSource;
+import java.sql.SQLException;
+import java.util.Properties;
 
 /**
  * @author: mady
@@ -59,5 +72,74 @@ public class DruidConfig {
         filterRegistrationBean.addInitParameter("exclusions","*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid2/*");
 
         return filterRegistrationBean;
+    }
+
+    @Value("${spring.datasource.url}")
+    private String dbUrl;
+
+    @Value("${spring.datasource.username}")
+    private String username;
+
+    @Value("${spring.datasource.password}")
+    private String password;
+
+    @Value("${spring.datasource.driver-class-name}")
+    private String driverClassName;
+
+    @Value("${spring.datasource.initialSize}")
+    private int initialSize;
+
+    @Value("${spring.datasource.minIdle}")
+    private int minIdle;
+
+    @Value("${spring.datasource.maxActive}")
+    private int maxActive;
+
+    @Value("${spring.datasource.maxWait}")
+    private int maxWait;
+
+    @Value("${spring.datasource.timeBetweenEvictionRunsMillis}")
+    private int timeBetweenEvictionRunsMillis;
+
+    @Value("${spring.datasource.minEvictableIdleTimeMillis}")
+    private int minEvictableIdleTimeMillis;
+
+    @Value("${spring.datasource.validationQuery}")
+    private String validationQuery;
+
+    @Value("${spring.datasource.testWhileIdle}")
+    private boolean testWhileIdle;
+
+    @Value("${spring.datasource.testOnBorrow}")
+    private boolean testOnBorrow;
+
+    @Value("${spring.datasource.testOnReturn}")
+    private boolean testOnReturn;
+
+    private static final String DRIIVER_CLASSNAME = "driverClassName";
+    private static final String URL = "url";
+    private static final String USERNAME = "username";
+    private static final String PASSWORD = "password";
+    private static final String INITIALSIZE = "initialSize";
+    private static final String MAXACTIVE = "maxActive";
+    private static final String MINIDLE = "minIdle";
+    private static final String MAXWAIT = "maxWait";
+    private static final String TESTONBORROW = "testOnBorrow";
+    private static final String VALIDATIONQUERY = "validationQuery";
+    private static final String TESTWHILEIDLE = "testWhileIdle";
+
+
+    @Bean("db1")
+    public DataSource db1DataSource() throws Exception {
+        Properties props = new Properties();
+        props.put(URL, dbUrl);
+        props.put(USERNAME, username);
+        props.put(PASSWORD, password);
+        props.put(DRIIVER_CLASSNAME, driverClassName);
+//        props.put(INITIALSIZE, initialSize+"");
+        props.put(MAXACTIVE, maxActive+"");
+//        props.put(MINIDLE, minIdle+"");
+//        props.put(MAXWAIT, maxWait+"");
+        return DruidDataSourceFactory.createDataSource(props);
     }
 }

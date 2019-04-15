@@ -28,9 +28,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TokenDao extends JpaRepository<Token, Integer> {
 
-    Token findByUserId(Integer id);
-
     @Query(value ="insert into t_token values(?1,?2,?3,?4)", nativeQuery = true)
     void save(Integer tokenId, Integer userid, String token, Integer createTime);
 
+    Token findByuserid(Integer id);
 }
